@@ -1,0 +1,34 @@
+<project name="build-site" default="docs" basedir=".">
+	<property name="docs.src" value="src/edited" />
+	<property name="docs.dest" value="www" />
+	<property name="style.src" value="src/style"/>
+
+	<target name="prepare">
+		<available classname="org.apache.anakia.AnakiaTask" property="AnakiaTask.present" />
+	</target>
+
+	<target depends="prepare" name="prepare-error" unless="AnakiaTask.present">
+		<echo>
+            AnakiaTask is not present! Please check to make sure that
+            velocity.jar is in your classpath.
+        </echo>
+	</target>
+
+	<target name="docs" depends="prepare-error">
+		<taskdef name="anakia" classname="org.apache.anakia.AnakiaTask" />
+		<anakia basedir="${docs.src}" destdir="${docs.dest}/" style="${style.src}/site.vsl.html" >
+		</anakia>
+		<!-- copy styles -->
+		<copy todir="${docs.dest}" filtering="no">
+			<fileset dir="${style.src}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<!-- copy images --> 
+		<copy todir="${docs.dest}/images" filtering="no">
+			<fileset dir="src/images">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+	</target>
+</project>
