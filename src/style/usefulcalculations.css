@@ -21,9 +21,13 @@
 	border: 1px solid black;
 	padding: 5px;
 }
+	
+#left_side img { float: none; padding: 0 0 0 0;}
 
 .imagediv {
-	float: left;	
+	float: left;
+	font-size: x-small;
+	padding: 0 10px 5px 0;
 }
 
 table {

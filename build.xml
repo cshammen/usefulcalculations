@@ -20,7 +20,7 @@
 		</anakia>
 		<!-- copy styles -->
 		<copy todir="${docs.dest}" filtering="no">
-			<fileset dir="${style.src}">
+			<fileset dir="${style.src}" excludes="*.vsl.html">
 				<include name="**/*" />
 			</fileset>
 		</copy>
