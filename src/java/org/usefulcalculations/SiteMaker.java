@@ -53,18 +53,19 @@ public class SiteMaker {
 				if (sourceFile.lastModified() >= outputFile.lastModified()) {
 					processFile(sourceFile, outputFile);
 				} else {
-					System.out.println("output file is newer than: "
-							+ sourceFile.getCanonicalPath());
+					System.out.println("up-to-date, skipping: "
+							+ sourceFile.getName());
 				}
 			} else {
-				System.out.println("ignoring file: " + sourceFile.getName());
+				System.out.println("non-html, ignoring: "
+						+ sourceFile.getName());
 			}
 		}
 	}
 
 	private void processFile(File sourceFile, File outputFile)
 			throws JDOMException, IOException {
-		System.out.println("processing file: " + sourceFile.getName());
+		System.out.println("processing: " + sourceFile.getName());
 		// parse xml input
 		Document doc = saxBuilder.build(sourceFile);
 		// strip namespaces off all elements for easier templating
