@@ -50,21 +50,18 @@ public class SiteMaker {
 		for (File sourceFile : sourceFiles) {
 			if (sourceFile.getName().endsWith(".html")) {
 				File outputFile = new File("./www/" + sourceFile.getName());
-				if (sourceFile.lastModified() >= outputFile.lastModified()) {
+				if (template.getLastModified() >= outputFile.lastModified() || sourceFile.lastModified() >= outputFile.lastModified()) {
 					processFile(sourceFile, outputFile);
 				} else {
-					System.out.println("up-to-date, skipping: "
-							+ sourceFile.getName());
+					System.out.println("up-to-date, skipping: " + sourceFile.getName());
 				}
 			} else {
-				System.out.println("non-html, ignoring: "
-						+ sourceFile.getName());
+				System.out.println("non-html, ignoring: " + sourceFile.getName());
 			}
 		}
 	}
 
-	private void processFile(File sourceFile, File outputFile)
-			throws JDOMException, IOException {
+	private void processFile(File sourceFile, File outputFile) throws JDOMException, IOException {
 		System.out.println("processing: " + sourceFile.getName());
 		// parse xml input
 		Document doc = saxBuilder.build(sourceFile);
