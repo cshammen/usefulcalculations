@@ -16,6 +16,8 @@
 	margin: 10px 0 10px 25px;
 }
 
+.note { font-size: x-small; }
+
 .tablediv {
 	margin-top: 17px;
 	border: 1px solid black;
@@ -35,12 +37,7 @@ table {
 	width: 100%;
 }
 
-td {
-	font: 0.74em/1.5em Arial, sans-serif;
-}
-
 th {
-	font: 0.74em/1.5em Arial, sans-serif;
 	font-weight: bold;
 	text-align: left;
 	border-bottom: 1px dotted;
