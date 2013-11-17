@@ -49,7 +49,7 @@ public class SiteMaker {
 		File[] sourceFiles = new File("./src/edited").listFiles();
 		for (File sourceFile : sourceFiles) {
 			if (sourceFile.getName().endsWith(".html")) {
-				File outputFile = new File("./www/" + sourceFile.getName());
+				File outputFile = new File("./web/" + sourceFile.getName());
 				if (template.getLastModified() >= outputFile.lastModified() || sourceFile.lastModified() >= outputFile.lastModified()) {
 					processFile(sourceFile, outputFile);
 				} else {

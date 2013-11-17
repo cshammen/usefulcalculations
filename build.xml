@@ -1,20 +1,25 @@
 <project name="build-site" default="docs" basedir=".">
-	
-	<target name="docs" >
+
+	<target name="docs">
 		<property name="docs.src" value="src/edited" />
-		<property name="docs.dest" value="www" />
-		<property name="style.src" value="src/style"/>
+		<property name="web.dest" value="web" />
+		<property name="style.src" value="src/style" />
 
 		<!-- run sitemaker -->
-		<java classname="org.usefulcalculations.SiteMaker"/>
+		<java classname="org.usefulcalculations.SiteMaker" />
+
+		<!-- copy index redirect -->
+		<copy todir="${web.dest}" file="src/index.html" />
+
 		<!-- copy styles -->
-		<copy todir="${docs.dest}" filtering="no">
+		<copy todir="${web.dest}" filtering="no">
 			<fileset dir="${style.src}" excludes="*.vsl.html">
 				<include name="**/*" />
 			</fileset>
 		</copy>
-		<!-- copy images --> 
-		<copy todir="${docs.dest}/images" filtering="no">
+
+		<!-- copy images -->
+		<copy todir="${web.dest}/images" filtering="no">
 			<fileset dir="src/images">
 				<include name="**/*" />
 			</fileset>
