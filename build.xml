@@ -8,9 +8,6 @@
 		<!-- run sitemaker -->
 		<java classname="org.usefulcalculations.SiteMaker" />
 
-		<!-- copy index redirect -->
-		<copy todir="${web.dest}" file="src/index.html" />
-
 		<!-- copy styles -->
 		<copy todir="${web.dest}" filtering="no">
 			<fileset dir="${style.src}" excludes="*.vsl.html">
